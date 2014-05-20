@@ -7,7 +7,7 @@ buildscript {
 
     repositories {
         maven {
-            url = "http://repo.spring.io/repo"
+            url = "http://repo.spring.io/snapshot"
         }
         mavenCentral()
     }
@@ -21,7 +21,7 @@ buildscript {
 
 repositories {
     maven {
-        url = "http://repo.spring.io/repo"
+        url = "http://repo.spring.io/snapshot"
     }
     mavenCentral()
 }
