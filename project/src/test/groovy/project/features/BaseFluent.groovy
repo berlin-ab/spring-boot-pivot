@@ -1,6 +1,7 @@
 package project.features;
 
-import org.fluentlenium.adapter.FluentTest;
+import org.fluentlenium.adapter.FluentTest
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -12,4 +13,10 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @IntegrationTest
 @WebAppConfiguration
 abstract class BaseFluent extends FluentTest {
+    @Before
+    def void parentBefore() {
+        flyway.clean();
+        flyway.init();
+        flyway.migrate();
+    }
 }

@@ -7,7 +7,7 @@ buildscript {
 
     repositories {
         maven {
-            url = "http://repo.spring.io/repo"
+            url = "http://repo.spring.io/snapshot"
         }
         mavenCentral()
     }
@@ -15,15 +15,14 @@ buildscript {
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
         classpath "org.springframework:springloaded:1.2.0.RELEASE"
-        classpath 'com.googlecode.flyway:flyway-gradle-plugin:2.3.1'
+        classpath 'org.flywaydb:flyway-gradle-plugin:3.0'
     }
 }
 
 repositories {
-    maven {
-        url = "http://repo.spring.io/repo"
-    }
     mavenCentral()
+    maven { url = "http://repo.spring.io/snapshot" }
+    maven { url = "http://repo.spring.io/libs-milestone" }
 }
 
 test {
@@ -35,6 +34,7 @@ dependencies {
 
     compile "org.springframework.boot:spring-boot:${springBootVersion}"
     compile "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
     compile "org.codehaus.groovy:groovy-all:2.3.1"
     compile "postgresql:postgresql:9.1-901.jdbc4"
 
@@ -42,6 +42,7 @@ dependencies {
     testCompile "org.fluentlenium:fluentlenium-festassert:0.10.0"
     testCompile 'junit:junit:4.11'
     testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    testCompile 'org.flywaydb:flyway-core:3.0'
 }
 
 apply plugin: 'flyway'
