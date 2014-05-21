@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+name = ARGV.first
+puts name
+
+system("rm -rf #{name}")
+system("cp -r project #{name}")
+
+`find foo -name project -type d`.split("\n").each do |directory|
+  new_directory_name  = directory.gsub('project', name)
+  system("mv #{directory} #{new_directory_name}")
+end
+
+system("find foo -name \*.groovy -o -name \*.yml -o -name \*.xml -o -name settings.gradle -o -name build.gradle | xargs sed -i .bak 's/project/#{name}/g'")
+
+system("find foo -name \*.bak | xargs rm")
+
