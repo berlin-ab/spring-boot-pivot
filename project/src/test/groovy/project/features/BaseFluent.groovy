@@ -13,6 +13,11 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @IntegrationTest
 @WebAppConfiguration
 abstract class BaseFluent extends FluentTest {
+    def describeStuff(description, code) {
+        puts description
+    }
+
+
     @Before
     def void parentBefore() {
         flyway.clean();

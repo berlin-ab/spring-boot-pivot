@@ -1,4 +1,4 @@
-package project.app
+package project.app.controllers
 
 import org.slf4j.Logger
 import org.springframework.beans.factory.annotation.Autowired

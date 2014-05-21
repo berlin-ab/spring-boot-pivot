@@ -1,4 +1,4 @@
-package project.unit
+package project.models
 
 import org.junit.Test
 
