@@ -1,17 +1,30 @@
 #!/usr/bin/env ruby
-
 name = ARGV.first
-puts name
+TEMPLATE_SOURCE='/usr/local/etc/spring-boot-pivot'
 
-system("rm -rf #{name}")
-system("cp -r project #{name}")
+system("cp -r #{TEMPLATE_SOURCE}/project #{name}")
 
-`find foo -name project -type d`.split("\n").each do |directory|
+`find #{name} -name project -type d`.split("\n").each do |directory|
   new_directory_name  = directory.gsub('project', name)
   system("mv #{directory} #{new_directory_name}")
 end
 
-system("find foo -name \*.groovy -o -name \*.yml -o -name \*.xml -o -name settings.gradle -o -name build.gradle | xargs sed -i .bak 's/project/#{name}/g'")
+system("find #{name} -name \*.groovy -o -name \*.yml -o -name \*.xml -o -name settings.gradle -o -name build.gradle | xargs sed -i .bak 's/project/#{name}/g'")
 
-system("find foo -name \*.bak | xargs rm")
+system("find #{name} -name \*.bak | xargs rm")
+
+puts "
+  Next steps:
+
+  # configure Intellij
+  $ gradle idea
+
+  # configure database for development and test environments
+  $ createdb #{name}_development
+  $ createdb #{name}_test
+
+  # build the project and run the tests
+  $ gradle build
+
+"
 
