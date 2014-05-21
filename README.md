@@ -9,11 +9,13 @@ A quick way to get started writing a Spring Boot application.
 
 ## Installation:
 
-    brew install gradle;
-    git clone https://github.com/pivotal/spring-boot-pivot.git;
-    cd spring-boot-pivot/project;
-    gradle bootRun;
-    open http://localhost:8080/;
+    curl https://raw.githubusercontent.com/berlin-ab/spring-boot-pivot/master/install.sh | bash
+    create-spring [name of new project] 
+
+
+    example:
+
+    create-spring myapp
 
 ## Intellij
 
